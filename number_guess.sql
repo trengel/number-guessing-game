@@ -39,6 +39,74 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: user_data; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.user_data (
+    id integer NOT NULL,
+    username character varying(25) NOT NULL,
+    games_played integer DEFAULT 0,
+    best_game integer DEFAULT 0
+);
+
+
+ALTER TABLE public.user_data OWNER TO freecodecamp;
+
+--
+-- Name: user_data_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.user_data_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_data_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: user_data_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.user_data_id_seq OWNED BY public.user_data.id;
+
+
+--
+-- Name: user_data id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.user_data ALTER COLUMN id SET DEFAULT nextval('public.user_data_id_seq'::regclass);
+
+
+--
+-- Data for Name: user_data; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Name: user_data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.user_data_id_seq', 15, true);
+
+
+--
+-- Name: user_data user_data_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.user_data
+    ADD CONSTRAINT user_data_pkey PRIMARY KEY (id);
+
+
 --
 -- PostgreSQL database dump complete
 --
