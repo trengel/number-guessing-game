@@ -6,7 +6,7 @@ SECRET_NUMBER=$((1 + RANDOM % 1000))
 echo -n "Enter your username: "; read USERNAME
 REGISTERED_USER=$($PSQL "SELECT username FROM user_data WHERE username='$USERNAME'")
 if [[ -z $REGISTERED_USER ]]; then
-  $PSQL "INSERT INTO user_data(username) VALUES('$USERNAME')"
+  ADD_USERNAME=$PSQL "INSERT INTO user_data(username) VALUES('$USERNAME')"
   echo "Welcome, $USERNAME! It looks like this is your first time here."
 else
   GAMES_PLAYED=$($PSQL "SELECT games_played FROM user_data WHERE username='$REGISTERED_USER'")
