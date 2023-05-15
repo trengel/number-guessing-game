@@ -96,7 +96,7 @@ ALTER TABLE ONLY public.user_data ALTER COLUMN id SET DEFAULT nextval('public.us
 -- Name: user_data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.user_data_id_seq', 15, true);
+SELECT pg_catalog.setval('public.user_data_id_seq', 1, false);
 
 
 --
